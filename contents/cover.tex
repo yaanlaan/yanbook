@@ -1,0 +1,94 @@
+\begin{titlepage}
+    \newgeometry{margin=0pt}
+    \thispagestyle{empty}
+    
+    \begin{tikzpicture}[remember picture, overlay]
+        % 1. 右侧面板：蓝色背景，贯穿整个页面，无阴影
+        % 计算分割点，假设左侧占 70%
+        \coordinate (split top) at ($(current page.north west)!0.7!(current page.north east)$);
+        \coordinate (split bottom) at ($(current page.south west)!0.7!(current page.south east)$);
+        
+        % 填充右侧区域
+        \fill[amzchaptercolor] (split top) rectangle (current page.south east);
+        
+        % 2. 右侧内容：竖排文字，白色
+        \node[anchor=center] at ($(split top)!0.5!(current page.south east)$) {
+            % 尝试使用楷体，如果未定义则定义
+            \ifx\kaishu\undefined
+                \newCJKfontfamily\kaishu{KaiTi}
+            \fi
+            \fontsize{24}{40}\selectfont \kaishu \color{white}
+            % 使用表格模拟竖排，从右向左读
+            \begin{tabular}{@{}c@{\hspace{1em}}c@{}}
+                一 & 月 \\
+                只 & 亮 \\
+                猫 & 想 \\
+                吃 & 着 \\
+                了 & 我 \\
+                我 & 的 \\
+                的 & 心 \\
+                奶 & 事 \\
+                酪 &    \\
+            \end{tabular}
+        };
+        
+        % 3. 左侧面板：白色背景，贯穿整个页面，有阴影
+        \node[
+            fill=white,
+            anchor=north west,
+            minimum height=\paperheight,
+            minimum width=0.7\paperwidth,
+            inner sep=0pt,
+            % 阴影投向右侧
+            drop shadow={opacity=0.2, shadow xshift=10pt, shadow yshift=0pt}
+        ] at (current page.north west) (leftpanel) {};
+        
+        % 4. 左侧内容
+        \node[anchor=north west, inner sep=2cm, text width=0.55\paperwidth] at (leftpanel.north west) {
+            
+            % 顶部留白
+            \vspace{3cm}
+            
+            % 标题
+            {\fontsize{42}{50}\selectfont \sffamily \bfseries \textcolor{black!85}{Yan Book}}\\[0.2em]
+            {\fontsize{42}{50}\selectfont \sffamily \bfseries \textcolor{black!85}{模板}}\\[1em]
+            
+            % 副标题
+            {\fontsize{16}{24}\selectfont \sffamily \textcolor{gray}{一个现代化的 \LaTeX\ 书籍模板}}\\[2.5cm]
+            
+            % 装饰线
+            {\color{amzchaptercolor}\rule{2cm}{4pt}}\\[2.5cm]
+            
+            % 摘要
+            {\sffamily \large \color{black!70} \setstretch{1.4}
+            本模板专注于\textbf{简洁}与\textbf{优雅}。
+            灵感来源于现代界面设计，它拥有充足的留白、
+            清晰的排版以及结构化的布局，非常适合用于技术书籍、
+            论文和学术笔记。
+            \par}\vspace{3cm}
+            
+            % 底部信息
+            \begin{minipage}{0.45\textwidth}
+                {\sffamily \bfseries \footnotesize \textcolor{gray}{作者}}\\[0.5em]
+                {\sffamily \large \textbf{yaan}}\\[0.2em]
+                {\sffamily \small \textcolor{black!60}{安徽大学}}\\[0.1em]
+                {\sffamily \tiny \textcolor{black!40}{Anhui University}}
+            \end{minipage}%
+            \begin{minipage}{0.45\textwidth}
+                {\sffamily \bfseries \footnotesize \textcolor{gray}{发布日期}}\\[0.5em]
+                {\sffamily \large \textbf{\today}}\\[0.2em]
+                {\sffamily \small \textcolor{black!60}{版本 1.0}}
+            \end{minipage}
+        };
+
+        % 5. 装饰元素：左侧面板右上角的极简几何图形
+        \node[anchor=north east, xshift=-2cm, yshift=-2cm] at (leftpanel.north east) {
+            \begin{tikzpicture}
+                \fill[amzchaptercolor!20] (0,0) circle (0.8cm);
+                \fill[amzchaptercolor] (0.4,0.4) circle (0.3cm);
+            \end{tikzpicture}
+        };
+        
+    \end{tikzpicture}
+    \restoregeometry
+\end{titlepage}

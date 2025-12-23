@@ -1,0 +1,83 @@
+\section{文本盒子}
+
+\epigraph{A mathematician is a machine for turning coffee into theorems.}{Paul Erdős}
+
+模板提供了几种预定义的彩色盒子，用于不同类型的内容。
+
+\subsection{定义与定理}
+
+\begin{lstlisting}[language=TeX, frame=single]
+\begin{dfnbox}{标题}{标签}
+    内容...
+\end{dfnbox}
+
+\begin{thmbox}{标题}{标签}
+    内容...
+\end{thmbox}
+\end{lstlisting}
+
+可用盒子：
+\begin{itemize}
+    \item \texttt{dfnbox}: 定义 (蓝色)
+    \item \texttt{thmbox}: 定理 (紫色，需要 \texttt{math} 选项)
+    \item \texttt{lembox}: 引理 (紫色，需要 \texttt{math} 选项)
+    \item \texttt{exbox}: 示例 (黄色)
+    \item \texttt{tecbox}: 技巧 (橙色)
+    \item \texttt{genbox}: 通用信息 (绿色)
+    \item \texttt{notebox}: 注意/警告 (红色，简单风格)
+\end{itemize}
+
+\section{代码块}
+
+\subsection{Mac 风格窗口}
+这些块模仿 macOS 窗口的外观。它们使用 \texttt{listings} 宏包，不需要 Python。
+
+\textbf{浅色模式：}
+\begin{lstlisting}[language=TeX, frame=single]
+\begin{maccode}{python}
+def hello():
+    print("Hello")
+\end{maccode}
+\end{lstlisting}
+
+\textbf{深色模式：}
+\begin{lstlisting}[language=TeX, frame=single]
+\begin{macdarkcode}{python}
+def hello():
+    print("Hello")
+\end{macdarkcode}
+\end{lstlisting}
+
+\section{对照环境}
+
+使用 \texttt{comparison} 环境并排显示两列内容，中间有垂直分隔线。
+
+\begin{lstlisting}[language=TeX, frame=single]
+\begin{comparison}
+    左侧内容
+    \tcblower
+    右侧内容
+\end{comparison}
+\end{lstlisting}
+
+\section{特殊功能}
+
+\subsection{章节名言}
+在章节开头添加名言：
+\begin{lstlisting}[language=TeX, frame=single]
+\epigraph{名言内容}{作者}
+\end{lstlisting}
+
+\subsection{术语表}
+为术语表定义符号：
+\begin{lstlisting}[language=TeX, frame=single]
+\nomenclature{$x$}{x 的描述}
+\end{lstlisting}
+列表使用 \texttt{\textbackslash printnomenclature} 打印。
+
+\subsection{全页背景}
+在当前页面插入全页背景图片：
+\begin{lstlisting}[language=TeX, frame=single]
+\fullpagebg[0.5]{path/to/image.jpg}
+\end{lstlisting}
+可选参数控制不透明度 (默认为 1)。

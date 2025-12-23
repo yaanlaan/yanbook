@@ -1,0 +1,33 @@
+\documentclass[math]{yanbook}
+
+\usepackage{lipsum}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{lindenmayersystems, decorations.pathmorphing, shapes, intersections, patterns}
+
+\title{Yan Book Template (中文演示)}
+\author{yaan}
+\date{\today}
+
+\begin{document}
+
+\input{contents/cover}
+\tableofcontents
+\printnomenclature[2cm]
+
+\chapter{简介}
+\input{chapters/chapter1_cn}
+
+\chapter{功能展示}
+\input{chapters/chapter2_cn}
+
+\chapter{基础使用指南}
+\input{chapters/chapter3_cn}
+
+\chapter{高级功能详解}
+\input{chapters/chapter4_cn}
+
+
+\end{document}

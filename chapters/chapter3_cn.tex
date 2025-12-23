@@ -1,0 +1,62 @@
+\epigraph{The essence of mathematics lies in its freedom.}{Georg Cantor}
+
+\section{项目结构}
+
+\texttt{yanbook} 模板的组织结构如下：
+
+\begin{itemize}
+    \item \texttt{main.tex}: 主文档文件。
+    \item \texttt{yanbook.cls}: 定义样式的自定义类文件。
+    \item \texttt{Makefile}: 构建自动化脚本。
+    \item \texttt{chapters/}: 包含章节内容文件的文件夹。
+    \item \texttt{contents/}: 包含封面等其他内容的文件夹。
+    \item \texttt{images/}: 用于存储图片的文件夹。
+    \item \texttt{output/}: 生成的 PDF 存放目录。
+    \item \texttt{build/}: 中间构建文件目录。
+\end{itemize}
+
+\section{编译}
+
+本项目使用 \texttt{Makefile} 来简化编译过程。
+
+\subsection{环境要求}
+\begin{itemize}
+    \item TeX 发行版 (TeX Live, MiKTeX, 或 MacTeX)
+    \item XeLaTeX 引擎 (用于 Unicode 和字体支持)
+    \item Make 工具 (可选但推荐)
+\end{itemize}
+
+\subsection{命令}
+要编译项目，请在项目根目录打开终端并运行：
+
+\begin{maccode}{bash}
+make
+\end{maccode}
+
+该命令将：
+\begin{enumerate}
+    \item 使用 \texttt{xelatex} 编译文档。
+    \item 运行 \texttt{biber} 处理参考文献 (如果需要)。
+    \item 运行 \texttt{makeindex} 处理术语表。
+    \item 重新编译以解决引用。
+    \item 将最终的 PDF 移动到 \texttt{output/} 目录。
+\end{enumerate}
+
+清理构建文件：
+\begin{maccode}{bash}
+make clean
+\end{maccode}
+
+\section{文档类选项}
+
+\texttt{yanbook} 类支持在 \texttt{main.tex} 中传递几个选项：
+
+\begin{maccode}{latex}
+\documentclass[math, code, fastcompile]{yanbook}
+\end{maccode}
+
+\begin{description}
+    \item[math] 启用数学相关环境 (\texttt{thmbox}, \texttt{lembox}) 并加载 \texttt{mathtools}, \texttt{amsthm}, \texttt{derivative} 等宏包。
+    \item[code] 启用 \texttt{minted} 宏包以进行高级代码高亮 (需要安装 Python 和 Pygments)。注意：模板也包含不需要此选项的独立 Mac 风格代码块。
+    \item[fastcompile] 禁用一些耗时的样式功能 (如花哨的章节标题和部分盒子阴影) 以加快草稿阶段的编译速度。
+\end{description}
