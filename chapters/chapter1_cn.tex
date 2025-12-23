@@ -18,3 +18,54 @@
 % print("Hello, Yanbook!")
 % \end{amzcode}
 % \end{codebox}
+
+\section{中文空格处理}
+
+在 LaTeX 中处理中文时，空格的处理方式可能会让人困惑。以下是几种在中文中添加空格的方法：
+
+\subsection{基本空格处理}
+
+在中文文本中，直接输入空格通常不会显示，因为 CJK 字符（中文、日文、韩文）的排版规则与西文不同。例如：
+
+\begin{verbatim}
+这是没有空格的中文句子。
+\end{verbatim}
+
+\subsection{使用特殊命令}
+
+要插入空格，您可以使用以下方法：
+
+\begin{enumerate}
+    \item 使用 \verb|\ | 命令：这\ 里\ 有\ 空\ 格
+    \item 使用 \verb|~| 命令：这里~有~不间断空格
+    \item 使用 \verb|\hspace{}| 命令：这里\hspace{1cm}有指定宽度的空格
+    \item 使用 \verb|\qquad| 或 \verb|\quad|：这里\quad 有\qquad 更大的空格
+\end{enumerate}
+
+\subsection{中英文混排的空格}
+
+在中英文混排时，LaTeX 通常会自动处理空格：
+
+\begin{verbatim}
+这是一个包含 English 和 数字 123 的句子。
+\end{verbatim}
+
+\subsection{调整中文字符间距}
+
+如果需要调整中文字符之间的间距，可以临时使用：
+
+\begin{verbatim}
+\begin{CJKspace}
+这 里 每 个 字 之 间 会 有 空 格
+\end{CJKspace}
+\end{verbatim}
+
+但请注意，这不是标准的中文排版方式，一般情况下不推荐使用。
+
+\subsection{实用技巧}
+
+\begin{itemize}
+    \item 在需要强调分隔的地方，使用标点符号而非空格
+    \item 使用引号、括号等标点符号来组织文本结构
+    \item 在中英文混排时，适当在英文前后添加空格以提高可读性
+\end{itemize}

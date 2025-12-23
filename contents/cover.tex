@@ -3,13 +3,13 @@
     \thispagestyle{empty}
     
     \begin{tikzpicture}[remember picture, overlay]
-        % 1. 右侧面板：蓝色背景，贯穿整个页面，无阴影
+        % 1. 右侧面板：自定义颜色背景，贯穿整个页面，无阴影
         % 计算分割点，假设左侧占 70%
         \coordinate (split top) at ($(current page.north west)!0.7!(current page.north east)$);
         \coordinate (split bottom) at ($(current page.south west)!0.7!(current page.south east)$);
         
         % 填充右侧区域
-        \fill[amzchaptercolor] (split top) rectangle (current page.south east);
+        \fill[yancovercolor] (split top) rectangle (current page.south east);
         
         % 2. 右侧内容：竖排文字，白色
         \node[anchor=center] at ($(split top)!0.5!(current page.south east)$) {
@@ -40,7 +40,7 @@
             minimum width=0.7\paperwidth,
             inner sep=0pt,
             % 阴影投向右侧
-            drop shadow={opacity=0.2, shadow xshift=10pt, shadow yshift=0pt}
+            % drop shadow={opacity=0.2, shadow xshift=10pt, shadow yshift=0pt}
         ] at (current page.north west) (leftpanel) {};
         
         % 4. 左侧内容

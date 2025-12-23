@@ -92,6 +92,8 @@
 \definecolor{amztecboxcolor}{HTML}{e17055}
 \definecolor{amzcodeboxcolor}{HTML}{2d3436}
 \definecolor{amznoteboxcolor}{HTML}{d63031}
+% 新增封面颜色定义
+\definecolor{yancovercolor}{HTML}{055796}
 
 % ------------------------------------------------------------
 % LINKS
