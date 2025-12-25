@@ -3,7 +3,6 @@
 ## 简介
 
 一个LaTeX书籍模板，受 [amznotes](https://github.com/alexmingzhang/latex-notes-template)风格启发
-
 ## 预览
 
 ![](assets/main_页面_01.jpg)

@@ -71,7 +71,7 @@
 
 % 中文支持
 \RequirePackage{xeCJK}
-\setCJKmainfont{SimSun}
+\setCJKmainfont{FandolSong}
 \setCJKsansfont{SimHei}
 \setCJKmonofont{FangSong}
 
