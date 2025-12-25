@@ -1,6 +1,6 @@
 % ------------------------------------------------------------
-% yanbook - Yan Book Template
-% Based on amznotes by Alex M Zhang
+% yanbook - Yan 书籍模板
+% 基于 Alex M Zhang 的 amznotes
 
 \ProvidesClass{yanbook}[2025/12/23 yanbook]
 \NeedsTeXFormat{LaTeX2e}
@@ -8,82 +8,83 @@
 \LoadClass[12pt]{report}
 
 % ------------------------------------------------------------
-% PROCESS OPTIONS
+% 处理选项
 
 \RequirePackage{kvoptions}
-\DeclareBoolOption{math}        % enables thmbox and math macros
-\DeclareBoolOption{code}        % enables codebox, amzcode, and \amzinputcode
-\DeclareBoolOption{fastcompile} % turns off some features for faster compiling
+\DeclareBoolOption{math}        % 启用 thmbox 和数学宏
+\DeclareBoolOption{code}        % 启用 codebox, amzcode, 和 \amzinputcode
+\DeclareBoolOption{fastcompile} % 关闭部分特性以加快编译速度
 
 \ProcessKeyvalOptions{yanbook}
 
 % ------------------------------------------------------------
-% LOAD REQUIRED PACKAGES
+% 加载必要的宏包
 
-\RequirePackage[margin=1in]{geometry}   % set margins
-\RequirePackage{fontspec}               % set main font
-\RequirePackage{unicode-math}           % set math font; replaces amssymb
-\RequirePackage[dvipsnames]{xcolor}     % pretty colors
-\RequirePackage{hyperref}               % hyperlinks in pdf viewers; will appear underlined only in pdf viewer
-\RequirePackage{fancyhdr}               % fancy headers
-\RequirePackage{lastpage}               % "X of Y" footer
-\RequirePackage{parskip}                % new line after each paragraph w/o indent
-\RequirePackage{setspace}               % 1.5 line spacing
-\RequirePackage[explicit]{titlesec}     % chapter styling
-\RequirePackage[most]{tcolorbox}        % pretty boxes
-\RequirePackage{ifthen}                 % disable index entries not being used
+\RequirePackage[margin=1in]{geometry}   % 设置页边距
+\RequirePackage{fontspec}               % 设置主要字体
+\RequirePackage{unicode-math}           % 设置数学字体; 替代 amssymb
+\RequirePackage[dvipsnames]{xcolor}     % 漂亮的颜色
+\RequirePackage{hyperref}               % PDF 阅读器中的超链接; 仅在 PDF 阅读器中显示下划线
+\RequirePackage{fancyhdr}               % 花哨的页眉
+\RequirePackage{lastpage}               % "X / Y" 页脚
+\RequirePackage{parskip}                % 段落后换行且不缩进
+\RequirePackage{setspace}               % 1.5 倍行距
+\RequirePackage[explicit]{titlesec}     % 章节样式
+\RequirePackage[most]{tcolorbox}        % 漂亮的盒子
+\RequirePackage{ifthen}                 % 禁用未使用的索引条目
 \RequirePackage{multicol}
-\RequirePackage{enumitem}                           % customize itemize spacing
-\RequirePackage{xfrac}                              % small fractions
-\RequirePackage[textsize=scriptsize]{todonotes}     % todo notes
+\RequirePackage{enumitem}                           % 自定义列表间距
+\RequirePackage{xfrac}                              % 小型分数
+\RequirePackage[textsize=scriptsize]{todonotes}     % 待办事项注释
 \RequirePackage{tabularx}
 \RequirePackage[some]{background}
 \RequirePackage{eso-pic}
 \RequirePackage{tikz}
 \usetikzlibrary{shadows, calc}
 
-% New Features Packages
-\RequirePackage{epigraph}           % Chapter quotes
-\RequirePackage{nomencl}            % Nomenclature/Glossary
-\makenomenclature                   % Initialize nomenclature
+% 新特性宏包
+\RequirePackage{epigraph}           % 章节引用
+\RequirePackage{nomencl}            % 术语表/词汇表
+\makenomenclature                   % 初始化术语表
 
 \ifyanbook@math
-    \RequirePackage{mathtools}          % for math macros; also loads amsmath
+    \RequirePackage{mathtools}          % 用于数学宏; 同时也加载 amsmath
     \RequirePackage{amsthm}
+    \newcommand{\squoval}{\openbox}
     \renewcommand\qedsymbol{$\squoval$}
     \RequirePackage{derivative}
 \fi
 
 \ifyanbook@code
-    \RequirePackage{minted}             % syntax coloring for code
+    \RequirePackage{minted}             % 代码语法高亮
     \tcbuselibrary{minted}
 \fi
 
 % ------------------------------------------------------------
-% FONTS
+% 字体
 
-% Note: Ensure these fonts are installed on your system
-% Using standard Windows fonts for compatibility
+% 注意: 确保您的系统中安装了这些字体
+% 使用标准 Windows 字体以保证兼容性
 \setmainfont{Times New Roman}
 \setmathfont{Cambria Math}
 \setmonofont{Consolas}
 
-% Chinese Support
+% 中文支持
 \RequirePackage{xeCJK}
 \setCJKmainfont{SimSun}
 \setCJKsansfont{SimHei}
 \setCJKmonofont{FangSong}
 
 % ------------------------------------------------------------
-% PAGE LAYOUT
+% 页面布局
 
 \onehalfspacing
 \renewcommand{\arraystretch}{1.25}
 
 % ------------------------------------------------------------
-% COLORS
+% 颜色
 
-% Color palette from https://flatuicolors.com/palette/us
+% 调色板来自 https://flatuicolors.com/palette/us
 \definecolor{amzchaptercolor}{HTML}{0984e3}
 \definecolor{amzdfnboxcolor}{HTML}{0984e3}
 \definecolor{amzthmboxcolor}{HTML}{6c5ce7}
@@ -96,17 +97,17 @@
 \definecolor{yancovercolor}{HTML}{055796}
 
 % ------------------------------------------------------------
-% LINKS
+% 链接
 
 \hypersetup{
     colorlinks=false,
     linkbordercolor=black,
     urlbordercolor=blue,
-    pdfborderstyle={/S/U/W 1}   % Underline links; only appears in pdf viewer, not printed
+    pdfborderstyle={/S/U/W 1}   % 下划线链接; 仅在 PDF 阅读器中显示, 打印时不显示
 }
 
 % ------------------------------------------------------------
-% CHAPTER STYLING
+% 章节样式
 
 \ifyanbook@fastcompile
 \else
@@ -162,7 +163,7 @@
 \fi %\ifyanbook@fastcompile
 
 % ------------------------------------------------------------
-% HEADER STYLING
+% 页眉样式
 
 \ifyanbook@fastcompile
 \else
@@ -182,7 +183,7 @@
 
 
 % ------------------------------------------------------------
-% COLOR BOXES
+% 彩色盒子
 \newcommand{\macbuttons}{%
     \begin{tikzpicture}[baseline=-3pt]
         \fill[red!60] (0,0) circle (3pt);
@@ -195,7 +196,7 @@
 \ifyanbook@fastcompile
 \tcbset{
     amzdefaultstyle/.style={
-        fonttitle=\strut\bfseries,  % strut for uniform title height
+        fonttitle=\strut\bfseries,  % 支柱用于统一标题高度
         separator sign=\amzcolorboxtitlesep,
         breakable
     },
@@ -217,11 +218,11 @@
     amzdefaultstyle/.style={
         enhanced,
         drop fuzzy shadow,
-        fonttitle=\strut\bfseries,  % strut for uniform title height
+        fonttitle=\strut\bfseries,  % 支柱用于统一标题高度
         boxrule=0pt,
         frame hidden,
         separator sign=\amzcolorboxtitlesep,
-        % parbox=false,               % normal paragraph spacing
+        % parbox=false,               % 正常段落间距
         breakable,
     },
     genboxstyle/.style={
@@ -260,13 +261,13 @@
 
 \fi %\ifyanbook@fastcompile
 
-% Comparison Environment
+% 对照环境
 \newtcolorbox{comparison}[1][]{
     comparisonstyle,
     #1
 }
 
-% Give the index numbers some more space
+% 给索引编号更多空间
 \renewcommand{\l@tcolorbox}{\@dottedtocline{1}{0pt}{3em}}
 \setlength{\columnsep}{3em}
 
@@ -274,7 +275,7 @@
     \addcontentsline{toc}{chapter}{Index}
     \chapter*{Index}
 
-    % Remove header for index
+    % 移除索引页眉
     \renewcommand{\headrulewidth}{0pt}
     \fancyhead{}
 
@@ -307,7 +308,7 @@
     \providetoggle{#3}
     \settoggle{#3}{false}
 
-    \newenvironment{#1}[2]{
+    \newenvironment{#1}[2][]{
         \global\settoggle{#3}{true}
         \begin{tc#1}{##1}{##2}
     }{
@@ -333,16 +334,26 @@
 \ifyanbook@math
     \newamzbox{lembox}{Lemma}{lem}{amzthmboxcolor}
     \newamzbox{thmbox}{Theorem}{thm}{amzthmboxcolor}
+    
+    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{lemma}{Lemma}[section]
+    \newtheorem{definition}{Definition}[section]
+    \newtheorem{proposition}{Proposition}[section]
+    \newtheorem{corollary}{Corollary}[section]
+    \newtheorem{remark}{Remark}[section]
+    \newtheorem{example}{Example}[section]
+    \newtheorem{problem}{Problem}[section]
+    \newtheorem{solution}{Solution}[section]
 \fi
 
 % ------------------------------------------------------------
-% ALGORITHMS & CODE (Mac Style)
+% 算法与代码 (Mac 风格)
 
 \RequirePackage{listings}
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 
-% Colors for code highlighting
+% 代码高亮颜色
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -352,7 +363,7 @@
 \definecolor{lightheader}{rgb}{0.9,0.9,0.9}
 \definecolor{darkheader}{rgb}{0.25,0.26,0.28}
 
-% Listings style
+% Listings 样式
 \lstdefinestyle{mystyle}{
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
@@ -382,7 +393,7 @@
 
 \lstset{style=mystyle}
 
-% Mac Window TColorBox Style
+% Mac 窗口 TColorBox 样式
 \tcbset{
     macwindow/.style={
         enhanced,
@@ -407,11 +418,11 @@
             left=3pt,
             right=3pt
         },
-        top=1.2em, % Space for the title bar
+        top=1.2em, % 标题栏空间
     }
 }
 
-% Light Mac Code Block
+% 浅色 Mac 代码块
 \newtcblisting{maccode}[2][]{
     macwindow,
     colback=backcolour,
@@ -422,7 +433,7 @@
     listing options={style=mystyle, language=#1},
 }
 
-% Dark Mac Code Block
+% 深色 Mac 代码块
 \newtcblisting{macdarkcode}[2][]{
     macwindow,
     colback=darkback,
@@ -433,7 +444,7 @@
     listing options={style=darkstyle, language=#1},
 }
 
-% Algorithm Box
+% 算法盒子
 \newtcolorbox{algobox}[1]{
     enhanced,
     colback=white,
@@ -456,25 +467,25 @@
     \newenvironment{amzcode}[2][]{
         \VerbatimEnvironment
         \begin{minted}[
-        linenos,            % Display line numbers
-        breaklines,         % Allow line breaks
-        autogobble,         % Collapse extra white spaces
+        linenos,            % 显示行号
+        breaklines,         % 允许换行
+        autogobble,         % 折叠多余空白
         xleftmargin=3.75mm,
         ]{#2}}
     {\end{minted}}
 
     \newcommand{\amzinputcode}[2]{\inputminted[
-        linenos,            % Display line numbers
-        breaklines,         % Allow line breaks
-        autogobble,         % Collapse extra white spaces
+        linenos,            % 显示行号
+        breaklines,         % 允许换行
+        autogobble,         % 折叠多余空白
         xleftmargin=3.75mm,
     ]{#1}{#2}}
 \fi
 
 % ------------------------------------------------------------
-% EPIGRAPH SETTINGS
+% 题词设置
 
-% Redefine \epigraph to look like a Markdown blockquote
+% 重定义 \epigraph 使其看起来像 Markdown 引用块
 \renewcommand{\epigraph}[2]{
     \begin{tcolorbox}[
         enhanced,
@@ -498,7 +509,7 @@
 }
 
 % ------------------------------------------------------------
-% FULL PAGE BACKGROUND
+% 全页背景
 
 \newcommand{\fullpagebg}[2][1]{%
     \AddToShipoutPictureBG*{%
@@ -511,7 +522,7 @@
 }
 
 % ------------------------------------------------------------
-% TEXT MACROS
+% 文本宏
 
 \newcommand{\dfntxt}[1]{\textit{\textbf{#1}}}
 
@@ -519,7 +530,7 @@
 \newcommand{\tabitem}{~~\llap{\textbullet}~~}
 
 % ------------------------------------------------------------
-% MATH MACROS
+% 数学宏
 
 \ifyanbook@math
     \newcommand{\rel}[1]{\mathrel{\mathcal{#1}}}
@@ -547,7 +558,7 @@
     \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
     \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
-    % Function Restriction
+    % 函数限制
     % From https://tex.stackexchange.com/a/22255
     \newcommand\restrict[2]{{
         \left.\kern-\nulldelimiterspace

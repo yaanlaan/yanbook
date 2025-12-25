@@ -1,0 +1,90 @@
+\section{环境速览}
+
+本章展示本模板中可用的环境与其用法示例，便于快速参考与对照。
+
+\subsection{盒子环境（tcolorbox）}
+
+% dfnbox: 定义
+\begin{dfnbox}[定义盒子示例]{defn-demo}
+这是一个定义盒子，用于强调术语或关键定义。
+\end{dfnbox}
+
+% dfnbox*：仅标题版本
+\begin{dfnbox*}{仅标题示例}
+星号版本的盒子使用必填标题参数，无可选项。
+\end{dfnbox*}
+
+% exbox: 例子
+\begin{exbox}[例子盒子示例]{ex-demo}
+这是一个例子盒子，可用于演示具体案例或计算。
+\end{exbox}
+
+% tecbox: 技巧
+\begin{tecbox}[技巧盒子示例]{tec-demo}
+这是一个技巧盒子，用于记录解题技巧或方法提示。
+\end{tecbox}
+
+% genbox: 通用盒子（需要标题）
+\begin{genbox}{通用盒子标题}
+这是一个通用盒子，可自由放置内容与说明。
+\end{genbox}
+
+% notebox: 注记盒子
+\begin{notebox}
+这是一个注记盒子，适合放置提示、注意事项或小结。
+\end{notebox}
+
+% thmbox / lembox （仅 math 选项启用时可用）
+\begin{thmbox}[定理盒子示例]{thm-demo}
+若 $a>b$ 且 $b>c$，则 $a>c$。
+\end{thmbox}
+
+\begin{lembox}[引理盒子示例]{lem-demo}
+若 $x>0$，则 $x^2\ge 0$。
+\end{lembox}
+
+\subsection{定理类环境（amsthm）}
+
+\begin{theorem}
+设 $x,y\in\mathbb{R}$。若 $x>y$，则对任意 $z\in\mathbb{R}$ 有 $x+z>y+z$。
+\end{theorem}
+
+\begin{lemma}
+若 $x\ge 0$，则 $\sqrt{x}$ 存在且为非负数。
+\end{lemma}
+
+\begin{definition}
+令函数 $f: A\to B$，若对任意 $x_1,x_2\in A$ 有 $x_1=x_2\Rightarrow f(x_1)=f(x_2)$，则称 $f$ 为良定义。
+\end{definition}
+
+\begin{proposition}
+对任意 $x\in\mathbb{R}$，有 $|x|\ge 0$。
+\end{proposition}
+
+\begin{corollary}
+若 $x\ne 0$，则 $x^2>0$。
+\end{corollary}
+
+\begin{remark}
+本模板的定理环境按章节编号，并使用标准样式显示。
+\end{remark}
+
+\begin{example}
+设 $f(x)=x^2$。则 $f'(x)=2x$。
+\end{example}
+
+\begin{problem}
+求解 $x^2-1=0$ 的全部实数解。
+\end{problem}
+
+\begin{solution}
+方程可因式分解为 $(x-1)(x+1)=0$，故解为 $x=\pm 1$。
+\end{solution}
+
+\begin{proof}
+由加法保序性可知：若 $x>y$，则对任意 $z$，均有 $x+z>y+z$。证毕。
+\end{proof}
+
+
+
+
