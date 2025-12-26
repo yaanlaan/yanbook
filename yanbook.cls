@@ -164,8 +164,21 @@
 \fi %\ifyanbook@fastcompile
 
 % ------------------------------------------------------------
+
+% 解决目录页面底部内容超出边界的问题
+\usepackage{etoolbox}
+\usepackage{geometry}
+
+% 在目录前后调整页面底部边距
+\makeatletter
+\pretocmd{\tableofcontents}{\newgeometry{bottom=1.5in}}{}{}
+\apptocmd{\tableofcontents}{\restoregeometry}{}{}
+\makeatother
+
+% ------------------------------------------------------------
 % 页眉样式
 
+\makeatletter
 \ifyanbook@fastcompile
 \else
 
