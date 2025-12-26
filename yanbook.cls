@@ -27,7 +27,8 @@
 \RequirePackage{hyperref}               % PDF 阅读器中的超链接; 仅在 PDF 阅读器中显示下划线
 \RequirePackage{fancyhdr}               % 花哨的页眉
 \RequirePackage{lastpage}               % "X / Y" 页脚
-\RequirePackage{parskip}                % 段落后换行且不缩进
+% \RequirePackage{parskip}                % 段落后换行且不缩进
+\RequirePackage{indentfirst}           % 首段缩进
 \RequirePackage{setspace}               % 1.5 倍行距
 \RequirePackage[explicit]{titlesec}     % 章节样式
 \RequirePackage[most]{tcolorbox}        % 漂亮的盒子
