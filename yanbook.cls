@@ -159,7 +159,7 @@
     \end{tcolorbox}
 }
 
-\titlespacing*{\chapter}{0pt}{-40mm}{-10mm}
+\titlespacing*{\chapter}{0pt}{-50mm}{-10mm}
 
 \fi %\ifyanbook@fastcompile
 

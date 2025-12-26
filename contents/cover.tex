@@ -15,12 +15,6 @@
             shading angle=90
         ] (split top) rectangle (current page.south east);
         
-        % 也可以使用径向渐变效果（如果喜欢圆形渐变效果，可以替换上面的代码）
-        % \shade[
-        %     inner color=yancovercolor!50!white,
-        %     outer color=yancovercolor!90!black
-        % ] (split top) rectangle (current page.south east);
-        
         % 2. 右侧内容：竖排文字，白色
         \node[anchor=center] at ($(split top)!0.5!(current page.south east)$) {
             % 尝试使用楷体，如果未定义则定义
