@@ -3,13 +3,23 @@
     \thispagestyle{empty}
     
     \begin{tikzpicture}[remember picture, overlay]
-        % 1. 右侧面板：自定义颜色背景，贯穿整个页面，无阴影
+        % 1. 右侧面板：渐变色背景，贯穿整个页面，无阴影
         % 计算分割点，假设左侧占 70%
         \coordinate (split top) at ($(current page.north west)!0.7!(current page.north east)$);
         \coordinate (split bottom) at ($(current page.south west)!0.7!(current page.south east)$);
         
-        % 填充右侧区域
-        \fill[yancovercolor] (split top) rectangle (current page.south east);
+        % 使用渐变色
+        \shade[
+            left color=yancovercolor!80!black, 
+            right color=yancovercolor!80!white,
+            shading angle=90
+        ] (split top) rectangle (current page.south east);
+        
+        % 也可以使用径向渐变效果（如果喜欢圆形渐变效果，可以替换上面的代码）
+        % \shade[
+        %     inner color=yancovercolor!50!white,
+        %     outer color=yancovercolor!90!black
+        % ] (split top) rectangle (current page.south east);
         
         % 2. 右侧内容：竖排文字，白色
         \node[anchor=center] at ($(split top)!0.5!(current page.south east)$) {
