@@ -9,7 +9,7 @@
     \int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
 \]
 
-\begin{thmbox}{微积分基本定理}{ftc}
+\begin{thmbox}[微积分基本定理]{ftc}
     设 $f$ 是定义在闭区间 $[a, b]$ 上的连续实值函数。设 $F$ 是定义在 $[a, b]$ 上的函数，对于所有 $x \in [a, b]$，有
     \[
         F(x) = \int_a^x f(t) \, dt
@@ -20,13 +20,13 @@
     \]
 \end{thmbox}
 
-\begin{lembox}{夹逼定理}{squeeze}
+\begin{lembox}[夹逼定理]{squeeze}
     如果 $g(x) \leq f(x) \leq h(x)$ 且 $\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L$，那么 $\lim_{x \to a} f(x) = L$。
 \end{lembox}
 
 \section{文本块}
 
-\begin{dfnbox}{极限的定义}{limit-def}
+\begin{dfnbox}[极限的定义]{limit-def}
     设 $f$ 是定义在包含 $c$ 的开区间（可能除去 $c$ 点）上的函数，且 $L$ 是一个实数。语句
     \[
         \lim_{x \to c} f(x) = L
@@ -34,7 +34,7 @@
     意味着对于任意 $\epsilon > 0$，存在一个 $\delta > 0$，使得如果 $0 < |x - c| < \delta$，则 $|f(x) - L| < \epsilon$。
 \end{dfnbox}
 
-\begin{exbox}{计算示例}{ex1}
+\begin{exbox}[计算示例]{ex1}
     计算 $x \to 2$ 时 $f(x) = x^2$ 的极限。
     
     \textit{解：} 因为 $f(x)$ 是连续的，我们直接代入数值：
@@ -43,7 +43,7 @@
     \]
 \end{exbox}
 
-\begin{tecbox}{分部积分法}{int-parts}
+\begin{tecbox}[分部积分法]{int-parts}
     分部积分公式为：
     \[
         \int u \, dv = uv - \int v \, du

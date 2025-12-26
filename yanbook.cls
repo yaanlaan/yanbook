@@ -65,15 +65,15 @@
 
 % 注意: 确保您的系统中安装了这些字体
 % 使用标准 Windows 字体以保证兼容性
-\setmainfont{Times New Roman}
-\setmathfont{Cambria Math}
+\setmainfont{Libertinus Serif}
+\setmathfont{Libertinus Math}
 \setmonofont{Consolas}
 
 % 中文支持
 \RequirePackage{xeCJK}
-\setCJKmainfont{FandolSong}
-\setCJKsansfont{SimHei}
-\setCJKmonofont{FangSong}
+\setCJKmainfont{LXGW WenKai}
+\setCJKsansfont{LXGW WenKai}
+\setCJKmonofont{LXGW WenKai Mono}
 
 % ------------------------------------------------------------
 % 页面布局
