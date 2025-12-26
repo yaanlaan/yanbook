@@ -98,9 +98,7 @@ clean-build:
 	@if exist $(BUILD_DIR)\*.run.xml del /Q $(BUILD_DIR)\*.run.xml
 	@if exist $(BUILD_DIR)\*.listing del /Q $(BUILD_DIR)\*.listing
 	@if exist $(BUILD_DIR)\*.synctex.gz del /Q $(BUILD_DIR)\*.synctex.gz
-	@if exist $(BUILD_DIR)\*.ilg del /Q $(BUILD_DIR)\*.ilg
 	@if exist $(BUILD_DIR)\*.nlo del /Q $(BUILD_DIR)\*.nlo
-	@if exist $(BUILD_DIR)\*.nls del /Q $(BUILD_DIR)\*.nls
 	@echo "Build directory cleaned"
 
 # 清理项目根目录中的辅助文件
@@ -112,12 +110,10 @@ clean-root:
 	@if exist *.bbl del /Q *.bbl
 	@if exist *.bcf del /Q *.bcf
 	@if exist *.blg del /Q *.blg
+	@if exist *.nlo del /Q *.nlo
 	@if exist *.run.xml del /Q *.run.xml
 	@if exist *.listing del /Q *.listing
 	@if exist *.synctex.gz del /Q *.synctex.gz
-	@if exist *.ilg del /Q *.ilg
-	@if exist *.nlo del /Q *.nlo
-	@if exist *.nls del /Q *.nls
 	@echo "Root directory cleaned"
 
 
