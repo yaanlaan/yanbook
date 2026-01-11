@@ -361,38 +361,51 @@
 \fi
 
 % ------------------------------------------------------------
-% 算法与代码 (Mac 风格)
+% 算法与代码 (Mac 风格 - 优化版)
 
 \RequirePackage{listings}
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 
-% 代码高亮颜色
+% 代码高亮颜色 (保持不变)
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{codeblue}{rgb}{0.25,0.5,0.35}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \definecolor{darkback}{rgb}{0.15,0.16,0.18}
-\definecolor{lightheader}{rgb}{0.9,0.9,0.9}
-\definecolor{darkheader}{rgb}{0.25,0.26,0.28}
 
-% Listings 样式
+% 新增：更逼真的 Mac 窗口颜色定义
+\definecolor{maclightgray}{HTML}{E8E8E8} % 浅色标题栏
+\definecolor{macdarkgray}{HTML}{3A3B3C}  % 深色标题栏
+\definecolor{macborderlight}{HTML}{D0D0D0} % 浅色边框
+\definecolor{macborderdark}{HTML}{2C2C2E}  % 深色边框
+% 按钮颜色
+\definecolor{macred}{HTML}{FF5F56}
+\definecolor{macyellow}{HTML}{FFBD2E}
+\definecolor{macgreen}{HTML}{27C93F}
+% 按钮边框颜色
+\definecolor{macredborder}{HTML}{E0443E}
+\definecolor{macyellowborder}{HTML}{DEA123}
+\definecolor{macgreenborder}{HTML}{1AAB29}
+% Listings 样式 (已修改行号大小)
 \lstdefinestyle{mystyle}{
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
+    % --- 修改开始：将 \tiny 改为 \footnotesize ---
+    numberstyle=\footnotesize\color{codegray},
+    % --- 修改结束 ---
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
 
@@ -402,58 +415,61 @@
     keywordstyle=\color{cyan},
     commentstyle=\color{green!60!black},
     stringstyle=\color{yellow!80!black},
-    numberstyle=\tiny\color{gray},
+    % --- 修改开始：保持一致，也将 \tiny 改为 \footnotesize ---
+    numberstyle=\footnotesize\color{gray},
+    % --- 修改结束 ---
 }
 
 \lstset{style=mystyle}
 
-% Mac 窗口 TColorBox 样式
+% 新增：改进的 Mac 按钮 TikZ 命令 (保持不变)
+\newcommand{\newmacbuttons}{%
+    \begin{tikzpicture}[baseline=-3pt, line width=0.5pt]
+        \draw[macredborder, fill=macred] (0,0) circle (3pt);
+        \draw[macyellowborder, fill=macyellow] (0.5,0) circle (3pt);
+        \draw[macgreenborder, fill=macgreen] (1.0,0) circle (3pt);
+    \end{tikzpicture}%
+}
+
+% 修改：Mac 窗口 TColorBox 基础样式
 \tcbset{
     macwindow/.style={
         enhanced,
-        colframe=gray!80!black,
-        boxrule=0.5pt,
         arc=6pt,
-        fonttitle=\sffamily\bfseries\small,
+        boxrule=1pt,
+        drop fuzzy shadow,
+        fonttitle=\sffamily\small,
+        halign title=center,
+        left=8mm,
+        right=5pt,
+        top=3pt,
+        bottom=3pt,
         title={
-            \begin{tikzpicture}[baseline=-3pt]
-                \fill[red!60] (0,0) circle (3pt);
-                \fill[yellow!60] (0.4,0) circle (3pt);
-                \fill[green!60] (0.8,0) circle (3pt);
-            \end{tikzpicture}
-            \hspace{0.5em} #1
+            \noindent\makebox[0pt][l]{\newmacbuttons}\hfill#1\hfill\hspace*{3em}
         },
-        attach boxed title to top left={xshift=0mm, yshift=0mm},
-        boxed title style={
-            empty, 
-            size=small, 
-            top=3pt, 
-            bottom=3pt,
-            left=3pt,
-            right=3pt
-        },
-        top=1.2em, % 标题栏空间
+        toptitle=6pt,
+        bottomtitle=6pt,
     }
 }
 
 % 浅色 Mac 代码块
 \newtcblisting{maccode}[2][]{
-    macwindow,
-    colback=backcolour,
-    coltitle=black,
-    colframe=lightheader,
-    title={#2},
+    macwindow={#2}, % 调用基础样式并传入标题
+    colback=backcolour,       % 内容背景色
+    colframe=macborderlight,  % 窗口边框色
+    colbacktitle=maclightgray,% 标题栏背景色
+    coltitle=black,           % 标题文字颜色
     listing only,
     listing options={style=mystyle, language=#1},
 }
 
 % 深色 Mac 代码块
 \newtcblisting{macdarkcode}[2][]{
-    macwindow,
-    colback=darkback,
-    coltitle=white,
-    colframe=darkheader,
-    title={#2},
+    macwindow={#2}, % 调用基础样式并传入标题
+    colback=darkback,         % 内容背景色
+    colframe=macborderdark,   % 窗口边框色
+    colbacktitle=macdarkgray, % 标题栏背景色
+    coltitle=white,           % 标题文字颜色
     listing only,
     listing options={style=darkstyle, language=#1},
 }
