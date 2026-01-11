@@ -7,15 +7,25 @@
 \subsection{定义与定理}
 
 \begin{lstlisting}[language=TeX, frame=single]
-\begin{dfnbox}{标题}{标签}
+\begin{dfnbox}[标题]{标签}
     内容...
 \end{dfnbox}
 
-\begin{thmbox}{标题}{标签}
+\begin{thmbox}[标题]{标签}
     内容...
 \end{thmbox}
 \end{lstlisting}
+也可以使用
+\begin{lstlisting}[language=TeX, frame=single]
+\begin{boxname*}{标题}
+    有标题无记号
+\end{boxname*}
 
+\begin{boxname}{标题}
+    无标题有记号
+\end{boxname}
+
+\end{lstlisting}
 可用盒子：
 \begin{itemize}
     \item \texttt{dfnbox}: 定义 (蓝色)
