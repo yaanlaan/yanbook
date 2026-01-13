@@ -289,17 +289,7 @@ int main() {
 请查看文档开头的术语表。
 
 \subsection{全页背景}
-下一页将有一个全页背景图（本例中使用 TikZ 模拟）。
+下一页将有一个全页背景图
 
 \newpage
-% Create a temporary pattern image for demonstration
-\begin{tikzpicture}[remember picture, overlay]
-    \node[opacity=0.1] at (current page.center) {
-        \begin{tikzpicture}
-            \foreach \i in {0,10,...,360}
-                \draw [rotate=\i] (0,0) -- (0,15);
-        \end{tikzpicture}
-    };
-    \node[font=\Huge\bfseries, text=red, rotate=45, opacity=0.3] at (current page.center) {背景示例};
-\end{tikzpicture}
-\fullpagebg[0.1]{example-image} % 实际使用时替换为图片路径
+\fullpagebg[0.5]{assets/default/yyyby尧了望.jpg}

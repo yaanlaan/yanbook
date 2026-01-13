@@ -7,13 +7,28 @@
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{lindenmayersystems, decorations.pathmorphing, shapes, intersections, patterns}
 
-\title{Yan Book Template (中文演示)}
-\author{yaan}
-\date{\today}
+\title{Yan Book}                 % 1. 标题
+\subtitle{一个现代化的 LaTeX 模板} % 2. 副标题
+\author{yaan}                    % 3. 作者
+\institute{安徽大学}              % 4. 机构
+\instituteen{Anhui University}   % 5. 机构英文
+\date{\today}                    % 6. 日期
+\version{1.0}                    % 7. 版本号
+\location{于枫园}          % 8. 位置
+
+\coverabstract{
+    \qquad{}一个 \LaTeX\ 书籍模板，受 \href{https://github.com/alexmingzhang/latex-notes-template}{amznotes} 风格启发，有多种环境和功能，适合写作技术类书籍和文档。
+    \par % 强制换段
+    \qquad{}中文字体使用 \href{https://github.com/lxgw/LxgwWenKai}{LXGW WenKai}，英文和数学字体使用 \href{https://github.com/alerque/libertinus}{libertinus}，请你自行下载并安装。
+}
+
 
 \begin{document}
 
+\makeatletter
 \input{contents/cover}
+\makeatother
+
 \tableofcontents
 \printnomenclature[2cm]
 

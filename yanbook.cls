@@ -82,6 +82,17 @@
 \onehalfspacing
 \renewcommand{\arraystretch}{1.25}
 
+
+% ------------------------------------------------------------
+% 封面字段设置
+% 定义新命令：副标题、机构、英文机构、版本、封面摘要    
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\institute}[1]{\def\@institute{#1}}
+\newcommand{\instituteen}[1]{\def\@instituteen{#1}}
+\newcommand{\version}[1]{\def\@version{#1}}
+\newcommand{\location}[1]{\def\@location{#1}}
+\newcommand{\coverabstract}[1]{\def\@coverabstract{#1}}
+
 % ------------------------------------------------------------
 % 颜色
 
