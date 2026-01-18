@@ -1,4 +1,4 @@
-TEX = xelatex -shell-escape
+TEX = xelatex
 BIB = biber
 MAIN = main
 OUTPUT_DIR = output
