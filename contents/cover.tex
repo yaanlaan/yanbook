@@ -26,9 +26,9 @@
 
                 % === 标题区域 ===
                 % 主标题
-                {\fontsize{42}{50}\selectfont \sffamily \bfseries \textcolor{black!85}{\@title}}
+                {\fontsize{42}{50}\selectfont \sffamily \bfseries \textcolor{black!85}{\csname @title\endcsname}}
                 \\[0.2em] % 这里控制主标题和副标题的距离，0.2em 表示很近
-                {\fontsize{16}{24}\selectfont \sffamily \textcolor{gray}{\@subtitle}}
+                {\fontsize{16}{24}\selectfont \sffamily \textcolor{gray}{\csname @subtitle\endcsname}}
                 \\[2.5cm] % 这里控制副标题和下方装饰线的距离
 
                 % 装饰线
@@ -52,11 +52,11 @@
                 \noindent
                 \begin{tabular}{@{} p{0.45\linewidth} p{0.45\linewidth} @{}}
                     {\sffamily \bfseries \footnotesize \textcolor{gray}{作者}} & {\sffamily \bfseries \footnotesize \textcolor{gray}{发布日期}} \\[0.5em]
-                    {\sffamily \large \textbf{\@author}} & {\sffamily \large \textbf{\@date}} \\[0.8em]
+                    {\sffamily \large \textbf{\csname @author\endcsname}} & {\sffamily \large \textbf{\csname @date\endcsname}} \\[0.8em]
                     
                     {\sffamily \bfseries \footnotesize \textcolor{gray}{机构}} & {\sffamily \bfseries \footnotesize \textcolor{gray}{版本}} \\[0.5em]
-                    {\sffamily \small \textcolor{black!80}{\@institute}} & {\sffamily \small \textcolor{black!80}{\@version}} \\[0.1em]
-                    {\sffamily \small \textcolor{black!40}{\@instituteen,\@location}} & {} 
+                    {\sffamily \small \textcolor{black!80}{\csname @institute\endcsname}} & {\sffamily \small \textcolor{black!80}{\csname @version\endcsname}} \\[0.1em]
+                    {\sffamily \small \textcolor{black!40}{\csname @instituteen\endcsname,\csname @location\endcsname}} & {} 
                 \end{tabular}
             };
             
