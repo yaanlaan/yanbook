@@ -22,7 +22,7 @@
 
 \RequirePackage[margin=1in]{geometry}   % 设置页边距
 \RequirePackage{fontspec}               % 设置主要字体
-\RequirePackage{unicode-math}           % 设置数学字体; 替代 amssymb
+% \RequirePackage{unicode-math}           % 设置数学字体; 替代 amssymb
 \RequirePackage[dvipsnames]{xcolor}     % 漂亮的颜色
 \RequirePackage{hyperref}               % PDF 阅读器中的超链接; 仅在 PDF 阅读器中显示下划线
 \RequirePackage{fancyhdr}               % 花哨的页眉
@@ -60,6 +60,8 @@
     \RequirePackage{minted}             % 代码语法高亮
     \tcbuselibrary{minted}
 \fi
+
+\RequirePackage{unicode-math}           % 设置数学字体; 必须在 mathtools 之后加载
 
 % ------------------------------------------------------------
 % 字体
