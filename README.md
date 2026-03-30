@@ -32,7 +32,6 @@
 
 - 标题为中文副标题为英文会有一些视觉上的不对齐问题，[查看 cover.tex 第 31 行](contents/cover.tex#L31)
 - box的用法和对应ref的用法[查看 yanbook.cls 第 323 行](yanbook.cls#323)
-- 公式字体
 
 ### 一些ai技巧
 建议这样组织文件，便于分章节编译查看（这是我经常给ai的要求）
