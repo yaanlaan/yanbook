@@ -320,6 +320,9 @@
         }{}
     }
 }
+% 请注意语法，\begin{某box}[title]{tag}，后文ref的时候需要使用\ref{某:tag}，h或者使用\begin{某box*}
+
+% genbox和notebox使用\begin{某box}{title}{tag}
 
 %\newamzbox{environment name}{title}{ref label}{color}[tcolorbox style]
 \newcounter{amzboxcounter}
