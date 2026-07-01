@@ -1,0 +1,24 @@
+\section{定理环境 (thmbox)}
+
+\begin{thmbox}[柯西-施瓦茨不等式]{thm:cauchy_schwarz}
+设 \( V \) 是内积空间，则对任意 \( \mathbf{u}, \mathbf{v} \in V \)，有：
+\[
+\abs{\langle \mathbf{u}, \mathbf{v} \rangle} \leq \norm{\mathbf{u}} \cdot \norm{\mathbf{v}}
+\]
+等号成立当且仅当 \( \mathbf{u} \) 和 \( \mathbf{v} \) 线性相关。
+\end{thmbox}
+
+\begin{thmbox*}[极化恒等式]
+在内积空间中，内积可以由范数表示：
+\[
+\langle \mathbf{u}, \mathbf{v} \rangle = \frac{1}{4} \left( \norm{\mathbf{u} + \mathbf{v}}^2 - \norm{\mathbf{u} - \mathbf{v}}^2 \right)
+\]
+\end{thmbox*}
+
+\begin{thmbox}[秩-零度定理]{thm:rank_nullity}
+设 \( A \) 是 \( m \times n \) 矩阵，则：
+\[
+\text{rank}(A) + \text{nullity}(A) = n
+\]
+其中 \( \text{nullity}(A) \) 是 \( A \) 的零空间维数。
+\end{thmbox}

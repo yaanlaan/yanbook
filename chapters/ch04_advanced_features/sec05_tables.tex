@@ -1,0 +1,42 @@
+\section{表格}
+
+\begin{genbox}{常见数据结构对比}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+数据结构 & 插入 & 删除 & 查找 & 空间复杂度 \\
+\midrule
+数组 & \( O(n) \) & \( O(n) \) & \( O(n) \) & \( O(n) \) \\
+链表 & \( O(1) \) & \( O(1) \) & \( O(n) \) & \( O(n) \) \\
+二叉搜索树 & \( O(\log n) \) & \( O(\log n) \) & \( O(\log n) \) & \( O(n) \) \\
+哈希表 & \( O(1) \) & \( O(1) \) & \( O(1) \) & \( O(n) \) \\
+\bottomrule
+\end{tabular}
+\end{genbox}
+
+\begin{genbox}{机器学习算法对比}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+算法 & 类型 & 适用数据 & 代表算法 \\
+\midrule
+线性模型 & 监督学习 & 数值型 & 线性回归、逻辑回归 \\
+决策树 & 监督学习 & 混合型 & CART、随机森林 \\
+神经网络 & 监督学习 & 数值型 & CNN、RNN、Transformer \\
+聚类算法 & 无监督学习 & 数值型 & K-Means、DBSCAN \\
+降维算法 & 无监督学习 & 数值型 & PCA、t-SNE \\
+\bottomrule
+\end{tabular}
+\end{genbox}
+
+\begin{genbox}{优化算法对比}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+算法 & 收敛速度 & 需要梯度 \\
+\midrule
+梯度下降 & 中等 & 是 \\
+牛顿法 & 快 & 是（需海森矩阵） \\
+拟牛顿法 & 快 & 是（无需海森矩阵） \\
+共轭梯度法 & 快 & 是（适用于对称正定） \\
+随机梯度下降 & 快（单次） & 是 \\
+\bottomrule
+\end{tabular}
+\end{genbox}

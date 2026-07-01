@@ -1,0 +1,48 @@
+\section{数学宏}
+
+\subsection{数字集合}
+
+\[
+\begin{aligned}
+\mathbb{N} &= \{0, 1, 2, \dots\} \\
+\mathbb{Z} &= \{\dots, -2, -1, 0, 1, 2, \dots\} \\
+\mathbb{Q} &= \left\{ \frac{p}{q} \mid p, q \in \mathbb{Z}, q \neq 0 \right\} \\
+\mathbb{R} &= \text{实数集} \\
+\mathbb{C} &= \{a + bi \mid a, b \in \mathbb{R}\} \\
+\mathbb{F} &= \text{任意域}
+\end{aligned}
+\]
+
+\subsection{运算符}
+
+\[
+\begin{aligned}
+\abs{x} &= \begin{cases} x & \text{if } x \geq 0, \\ -x & \text{if } x < 0. \end{cases} \\
+\norm{\mathbf{x}}_2 &= \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} \\
+\ceil{\frac{5}{2}} &= 3, \quad \floor{\frac{5}{2}} = 2 \\
+\bigO{n \log n} &\quad \text{快速排序的时间复杂度} \\
+\bigO{n^3} &\quad \text{矩阵乘法的时间复杂度}
+\end{aligned}
+\]
+
+\subsection{特殊符号}
+
+\[
+\restrict{f}{x=0} = f(0)
+\]
+
+\[
+A \symdiff B = (A \setminus B) \cup (B \setminus A)
+\]
+
+\[
+\alg{S} = \text{由集合 } S \text{ 生成的代数}
+\]
+
+\[
+\begin{aligned}
+\laplace\{f(t)\} &= F(s) = \int_0^\infty f(t) e^{-st} dt \\
+\proj_{\mathbf{v}}(\mathbf{u}) &= \frac{\langle \mathbf{u}, \mathbf{v} \rangle}{\norm{\mathbf{v}}^2} \mathbf{v} \\
+\comp{A}{B} &= B \setminus A
+\end{aligned}
+\]

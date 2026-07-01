@@ -1,0 +1,85 @@
+\section{数学公式综合}
+
+\subsection{积分公式}
+
+\[
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\]
+
+\[
+\int_{0}^{\infty} x^n e^{-x} dx = n!
+\]
+
+\[
+\int_a^b f(x) dx = F(b) - F(a) \quad \text{（牛顿-莱布尼茨公式）}
+\]
+
+\subsection{级数公式}
+
+\[
+\sum_{k=0}^{\infty} \frac{1}{k!} = e
+\]
+
+\[
+\sum_{k=1}^{\infty} \frac{1}{k^2} = \frac{\pi^2}{6}
+\]
+
+\[
+\sum_{k=0}^{n} \binom{n}{k} = 2^n
+\]
+
+\subsection{极限公式}
+
+\[
+\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = e
+\]
+
+\[
+\lim_{x \to 0} \frac{\sin x}{x} = 1
+\]
+
+\[
+\lim_{x \to \infty} \left( 1 + \frac{a}{x} \right)^x = e^a
+\]
+
+\subsection{矩阵公式}
+
+\[
+A = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+
+\[
+\det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^{n} a_{i,\sigma(i)}
+\]
+
+\[
+A^{-1} = \frac{1}{\det(A)} \text{adj}(A)
+\]
+
+\subsection{方程组}
+
+\[
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 = b_1 \\
+a_{21}x_1 + a_{22}x_2 = b_2
+\end{cases}
+\]
+
+\[
+A\mathbf{x} = \mathbf{b} \iff \mathbf{x} = A^{-1}\mathbf{b}
+\]
+
+\subsection{三角函数}
+
+\[
+\begin{aligned}
+\cos(\alpha + \beta) &= \cos\alpha \cos\beta - \sin\alpha \sin\beta \\
+\sin(\alpha + \beta) &= \sin\alpha \cos\beta + \cos\alpha \sin\beta \\
+\tan(\alpha + \beta) &= \frac{\tan\alpha + \tan\beta}{1 - \tan\alpha \tan\beta}
+\end{aligned}
+\]

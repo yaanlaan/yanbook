@@ -1,0 +1,31 @@
+\section{对比环境 (comparison)}
+
+\begin{comparison}
+\textbf{直接求解法}
+
+适用于小规模问题，方法包括 LU 分解、QR 分解等，复杂度 \( O(n^3) \)。优点是精度高，缺点是内存占用大。
+\tcblower
+\textbf{迭代求解法}
+
+适用于大规模稀疏问题，方法包括共轭梯度法、GMRES 等，每步复杂度 \( O(n^2) \)。优点是内存效率高，缺点是可能不收敛或收敛慢。
+\end{comparison}
+
+\begin{comparison}
+\textbf{线性变换}
+
+保持向量空间结构，核是子空间，像也是子空间。线性变换可以用矩阵表示。
+\tcblower
+\textbf{非线性变换}
+
+不保持加法或数乘，通常更复杂。非线性变换在机器学习中广泛应用，如神经网络。
+\end{comparison}
+
+\begin{comparison}
+\textbf{监督学习}
+
+使用标注数据进行训练，目标是学习输入到输出的映射。包括分类和回归任务。
+\tcblower
+\textbf{无监督学习}
+
+使用未标注数据进行训练，目标是发现数据的内在结构。包括聚类和降维任务。
+\end{comparison}

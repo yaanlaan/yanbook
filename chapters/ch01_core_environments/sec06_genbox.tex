@@ -1,0 +1,33 @@
+\section{通用盒子 (genbox)}
+
+\begin{genbox}{内积空间的重要性质}
+\begin{itemize}
+    \item 毕达哥拉斯定理：若 \( \mathbf{u} \perp \mathbf{v} \)，则 \( \norm{\mathbf{u} + \mathbf{v}}^2 = \norm{\mathbf{u}}^2 + \norm{\mathbf{v}}^2 \)
+    \item 平行四边形法则：\( \norm{\mathbf{u} + \mathbf{v}}^2 + \norm{\mathbf{u} - \mathbf{v}}^2 = 2(\norm{\mathbf{u}}^2 + \norm{\mathbf{v}}^2) \)
+    \item 柯西-施瓦茨不等式：\( \abs{\langle \mathbf{u}, \mathbf{v} \rangle} \leq \norm{\mathbf{u}} \cdot \norm{\mathbf{v}} \)
+\end{itemize}
+\end{genbox}
+
+\begin{genbox}{常见内积空间对比}
+\begin{tabular}{@{}lll@{}}
+\toprule
+空间 & 内积定义 & 范数 \\
+\midrule
+\( \mathbb{R}^n \) & \( \mathbf{u}^T \mathbf{v} \) & 欧几里得范数 \\
+\( C[a, b] \) & \( \int_a^b f(x)g(x)dx \) & \( L_2 \) 范数 \\
+\( \ell^2 \) & \( \sum_{n=1}^{\infty} a_n \overline{b_n} \) & 平方可和范数 \\
+\bottomrule
+\end{tabular}
+\end{genbox}
+
+\begin{genbox}{矩阵分解方法对比}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+方法 & 适用矩阵 & 分解形式 & 复杂度 & 稳定性 \\
+\midrule
+LU 分解 & 方阵 & \( A = LU \) & \( O(n^3) \) & 需选主元 \\
+QR 分解 & 任意矩阵 & \( A = QR \) & \( O(mn^2) \) & 好 \\
+SVD & 任意矩阵 & \( A = U\Sigma V^T \) & \( O(mn^2) \) & 最好 \\
+\bottomrule
+\end{tabular}
+\end{genbox}

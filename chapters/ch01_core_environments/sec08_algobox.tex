@@ -1,0 +1,44 @@
+\section{算法盒子 (algobox)}
+
+\begin{algobox}{矩阵乘法}
+\begin{lstlisting}[language=Python]
+def matmul(A, B):
+    m, n = len(A), len(A[0])
+    n2, p = len(B), len(B[0])
+    C = [[0]*p for _ in range(m)]
+    for i in range(m):
+        for j in range(p):
+            for k in range(n):
+                C[i][j] += A[i][k] * B[k][j]
+    return C
+\end{lstlisting}
+\end{algobox}
+
+\begin{algobox}{二分查找}
+\begin{lstlisting}[language=Python]
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+\end{lstlisting}
+\end{algobox}
+
+\begin{algobox}{快速排序}
+\begin{lstlisting}[language=Python]
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+\end{lstlisting}
+\end{algobox}

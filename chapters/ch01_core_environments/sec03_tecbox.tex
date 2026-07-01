@@ -1,0 +1,16 @@
+\section{技术环境 (tecbox)}
+
+\begin{tecbox}[Gram-Schmidt 正交化]{tec:gram_schmidt}
+设 \( \{ \mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_k \} \) 是内积空间中的线性无关向量组，按以下步骤可得到正交向量组：
+\[
+\mathbf{u}_i = \mathbf{v}_i - \sum_{j=1}^{i-1} \frac{\langle \mathbf{v}_i, \mathbf{u}_j \rangle}{\langle \mathbf{u}_j, \mathbf{u}_j \rangle} \mathbf{u}_j
+\]
+\end{tecbox}
+
+\begin{tecbox}[QR 分解]{tec:qr_decomposition}
+任意实矩阵 \( A \) 可分解为 \( A = QR \)，其中 \( Q \) 是正交矩阵，\( R \) 是上三角矩阵。QR 分解可通过 Gram-Schmidt 正交化、Householder 变换或 Givens 旋转实现。
+\end{tecbox}
+
+\begin{tecbox}[奇异值分解]{tec:svd}
+任意 \( m \times n \) 矩阵 \( A \) 可分解为 \( A = U\Sigma V^T \)，其中 \( U \) 和 \( V \) 是正交矩阵，\( \Sigma \) 是对角矩阵，对角线上的元素称为奇异值。
+\end{tecbox}

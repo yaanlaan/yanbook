@@ -36,6 +36,7 @@
 \RequirePackage{multicol}
 \RequirePackage{enumitem}                           % 自定义列表间距
 \RequirePackage{xfrac}                              % 小型分数
+\setlength{\marginparwidth}{1.5cm}
 \RequirePackage[textsize=scriptsize]{todonotes}     % 待办事项注释
 \RequirePackage{tabularx}
 \RequirePackage[some]{background}
@@ -363,7 +364,7 @@
 \newamzbox{exbox}{Example}{ex}{amzexboxcolor}
 \newamzbox{tecbox}{Technique}{tec}{amztecboxcolor}
 
-\newtcolorbox{genbox}[1]{amzdefaultstyle, genboxstyle, title={#1}}
+\newtcolorbox{genbox}[1]{amzdefaultstyle, genboxstyle, title={#1}, breakable}
 \newtcolorbox{notebox}{noteboxstyle}
 
 \ifyanbook@math
@@ -409,13 +410,11 @@
 \definecolor{macredborder}{HTML}{E0443E}
 \definecolor{macyellowborder}{HTML}{DEA123}
 \definecolor{macgreenborder}{HTML}{1AAB29}
-% Listings 样式 (已修改行号大小)
+% Listings 样式
 \lstdefinestyle{mystyle}{
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
-    % --- 修改开始：将 \tiny 改为 \footnotesize ---
-    numberstyle=\footnotesize\color{codegray},
-    % --- 修改结束 ---
+    numberstyle=\footnotesize\color{codegray}\ttfamily,
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,
@@ -423,11 +422,23 @@
     captionpos=b,
     keepspaces=true,
     numbers=left,
-    numbersep=5pt,
+    numbersep=10pt,
+    numberblanklines=true,
+    stepnumber=1,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
-    tabsize=2
+    tabsize=2,
+    frame=single,
+    frameround=tttt,
+    rulecolor=\color{gray!30},
+    framexleftmargin=18pt,
+    framexrightmargin=5pt,
+    framextopmargin=8pt,
+    framexbottommargin=8pt,
+    backgroundcolor=\color{gray!5},
+    xleftmargin=10pt,
+    xrightmargin=5pt
 }
 
 \lstdefinestyle{darkstyle}{
@@ -436,9 +447,34 @@
     keywordstyle=\color{cyan},
     commentstyle=\color{green!60!black},
     stringstyle=\color{yellow!80!black},
-    % --- 修改开始：保持一致，也将 \tiny 改为 \footnotesize ---
-    numberstyle=\footnotesize\color{gray},
-    % --- 修改结束 ---
+    numberstyle=\footnotesize\color{gray!60}\ttfamily,
+    rulecolor=\color{gray!50},
+    backgroundcolor=\color{darkback}
+}
+
+% Mac 风格代码块专用样式（无边框）
+\lstdefinestyle{maclightstyle}{
+    style=mystyle,
+    frame=none,
+    backgroundcolor=,
+    framexleftmargin=0pt,
+    framexrightmargin=0pt,
+    framextopmargin=0pt,
+    framexbottommargin=0pt,
+    xleftmargin=0pt,
+    xrightmargin=0pt,
+}
+
+\lstdefinestyle{macdarkstyle}{
+    style=darkstyle,
+    frame=none,
+    backgroundcolor=,
+    framexleftmargin=0pt,
+    framexrightmargin=0pt,
+    framextopmargin=0pt,
+    framexbottommargin=0pt,
+    xleftmargin=0pt,
+    xrightmargin=0pt,
 }
 
 \lstset{style=mystyle}
@@ -482,7 +518,7 @@
     colbacktitle=maclightgray,% 标题栏背景色
     coltitle=black,           % 标题文字颜色
     listing only,
-    listing options={style=mystyle, language=#1},
+    listing options={style=maclightstyle, language=#1},
 }
 
 % 深色 Mac 代码块
@@ -493,7 +529,7 @@
     colbacktitle=macdarkgray, % 标题栏背景色
     coltitle=white,           % 标题文字颜色
     listing only,
-    listing options={style=darkstyle, language=#1},
+    listing options={style=macdarkstyle, language=#1},
 }
 
 % 算法盒子
