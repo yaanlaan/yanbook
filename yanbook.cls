@@ -22,7 +22,7 @@
 
 \RequirePackage[margin=1in]{geometry}   % 设置页边距
 \RequirePackage{fontspec}               % 设置主要字体
-% \RequirePackage{unicode-math}           % 设置数学字体; 替代 amssymb
+\RequirePackage{unicode-math}           % 设置数学字体; 替代 amssymb
 \RequirePackage[dvipsnames]{xcolor}     % 漂亮的颜色
 \RequirePackage{hyperref}               % PDF 阅读器中的超链接; 仅在 PDF 阅读器中显示下划线
 \RequirePackage{fancyhdr}               % 花哨的页眉
@@ -41,7 +41,7 @@
 \RequirePackage[some]{background}
 \RequirePackage{eso-pic}
 \RequirePackage{tikz}
-\usetikzlibrary{shadows, calc}
+\usetikzlibrary{shadows, calc, fit}
 
 % 新特性宏包
 \RequirePackage{epigraph}           % 章节引用
@@ -61,8 +61,6 @@
     \tcbuselibrary{minted}
 \fi
 
-\RequirePackage{unicode-math}           % 设置数学字体; 必须在 mathtools 之后加载
-
 % ------------------------------------------------------------
 % 字体
 
@@ -77,6 +75,10 @@
 \setCJKmainfont{LXGW WenKai}
 \setCJKsansfont{LXGW WenKai}
 \setCJKmonofont{LXGW WenKai Mono}
+
+% 时间设置
+\usepackage[en-US]{datetime2} % 设为美式英语格式
+% \usepackage[GB]{datetime2}  % 如果想用中文格式
 
 % ------------------------------------------------------------
 % 页面布局
@@ -236,7 +238,8 @@
         skin=bicolor,
         collower=white,
         colbacklower=darkgray,
-        before title={\macbuttons\enspace}
+        before title={\macbuttons\enspace},
+        breakable,
     },
 }
 
@@ -265,13 +268,15 @@
         borderline west={4pt}{0pt}{amznoteboxcolor},
         colback=amznoteboxcolor!7!white,
         sharp corners,
+        breakable,
     },
     codeboxstyle/.style={
         overlay={\begin{tcbclipinterior}\fill[darkgray!20!white] (frame.south west) rectangle ([xshift=6mm]frame.north west);\end{tcbclipinterior}},
         skin=bicolor,
         collower=white,
         colbacklower=darkgray,
-        before title={\macbuttons\enspace}
+        before title={\macbuttons\enspace},
+        breakable,
     },
     comparisonstyle/.style={
         enhanced,
@@ -465,6 +470,7 @@
         },
         toptitle=6pt,
         bottomtitle=6pt,
+        breakable,
     }
 }
 
@@ -501,7 +507,8 @@
     boxed title style={colback=amzchaptercolor},
     sharp corners,
     boxrule=1pt,
-    top=10pt
+    top=10pt,
+    breakable,
 }
 
 \ifyanbook@code
