@@ -1,7 +1,15 @@
 \section{表格}
 
-\begin{genbox}{常见数据结构对比}
+本节展示表格的多种使用方式：独立表格、盒子内表格、并排子表格，以及盒子内并排表格。所有表格均通过 \texttt{\textbackslash centering} 居中。
+
+\subsection{独立表格}
+
+使用 \texttt{table} 浮动环境承载三线表，配合 \texttt{booktabs} 宏包，通过 \texttt{\textbackslash centering} 居中。\texttt{\textbackslash caption} 用于添加表题，\texttt{\textbackslash label} 用于交叉引用。
+
+\begin{table}[htbp]
 \centering
+\caption{常见数据结构对比}
+\label{tab:data_structures}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 数据结构 & 插入 & 删除 & 查找 & 空间复杂度 \\
@@ -12,9 +20,14 @@
 哈希表 & \( O(1) \) & \( O(1) \) & \( O(1) \) & \( O(n) \) \\
 \bottomrule
 \end{tabular}
-\end{genbox}
+\end{table}
+
+\subsection{盒子内表格}
+
+将表格放入 \texttt{genbox} 中作为强调展示，盒子内同样使用 \texttt{\textbackslash centering} 居中。盒子适合用于需要视觉突出的对比性内容。
 
 \begin{genbox}{机器学习算法对比}
+\centering
 \begin{tabular}{@{}lccc@{}}
 \toprule
 算法 & 类型 & 适用数据 & 代表算法 \\
@@ -28,16 +41,79 @@
 \end{tabular}
 \end{genbox}
 
-\begin{genbox}{优化算法对比}
-\begin{tabular}{@{}lcc@{}}
+\subsection{并排子表格}
+
+使用 \texttt{subtable} 环境实现并排子表格，每个子表可独立编号和引用。主表通过 \texttt{\textbackslash caption} 命名，子表通过子环境内的 \texttt{\textbackslash caption} 命名。
+
+\begin{table}[htbp]
+\centering
+\caption{优化算法对比汇总}
+\label{tab:optimization}
+\begin{subtable}{0.45\linewidth}
+\centering
+\caption{梯度类算法}
+\label{tab:grad}
+\begin{tabular}{@{}lc@{}}
 \toprule
-算法 & 收敛速度 & 需要梯度 \\
+算法 & 收敛速度 \\
 \midrule
-梯度下降 & 中等 & 是 \\
-牛顿法 & 快 & 是（需海森矩阵） \\
-拟牛顿法 & 快 & 是（无需海森矩阵） \\
-共轭梯度法 & 快 & 是（适用于对称正定） \\
-随机梯度下降 & 快（单次） & 是 \\
+梯度下降 & 中等 \\
+牛顿法 & 快 \\
+共轭梯度法 & 快 \\
+随机梯度下降 & 快（单次） \\
 \bottomrule
 \end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}{0.45\linewidth}
+\centering
+\caption{非梯度类算法}
+\label{tab:other}
+\begin{tabular}{@{}lc@{}}
+\toprule
+算法 & 需要梯度 \\
+\midrule
+坐标下降 & 否 \\
+EM 算法 & 否 \\
+模拟退火 & 否 \\
+遗传算法 & 否 \\
+\bottomrule
+\end{tabular}
+\end{subtable}
+\end{table}
+
+\subsection{盒子内并排表格}
+
+在 \texttt{genbox} 内通过 \texttt{minipage} 实现并排表格，适合对比性内容。每个 \texttt{minipage} 内部使用 \texttt{\textbackslash centering} 居中。
+
+\begin{genbox}{排序算法对比}
+\centering
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\textbf{比较类排序}\\[4pt]
+\begin{tabular}{@{}lc@{}}
+\toprule
+算法 & 平均复杂度 \\
+\midrule
+快速排序 & \( O(n \log n) \) \\
+归并排序 & \( O(n \log n) \) \\
+堆排序 & \( O(n \log n) \) \\
+冒泡排序 & \( O(n^2) \) \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\textbf{非比较类排序}\\[4pt]
+\begin{tabular}{@{}lc@{}}
+\toprule
+算法 & 平均复杂度 \\
+\midrule
+计数排序 & \( O(n+k) \) \\
+桶排序 & \( O(n+k) \) \\
+基数排序 & \( O(n \cdot d) \) \\
+\bottomrule
+\end{tabular}
+\end{minipage}
 \end{genbox}

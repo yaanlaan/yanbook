@@ -1,10 +1,17 @@
 \section{图表}
 
-\begin{genbox}{函数图像示例}
+本节展示图片的多种使用方式：独立单图、盒子内单图、并排子图、盒子内并排图，以及外部图片引入。所有图片均通过 \texttt{\textbackslash centering} 居中。
+
+\subsection{独立单图}
+
+使用 \texttt{figure} 浮动环境承载单张图片，\texttt{\textbackslash caption} 添加图题，\texttt{\textbackslash label} 用于交叉引用。图片在浮动环境内通过 \texttt{\textbackslash centering} 居中。
+
+\begin{figure}[htbp]
+\centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=8cm,
-    height=5cm,
+    width=10cm,
+    height=6cm,
     xlabel={$x$},
     ylabel={$f(x)$},
     grid=major,
@@ -18,13 +25,20 @@
 \addlegendentry{$f(x) = |x|$}
 \end{axis}
 \end{tikzpicture}
-\end{genbox}
+\caption{函数图像示例}
+\label{fig:functions}
+\end{figure}
+
+\subsection{盒子内单图}
+
+将图片放入 \texttt{genbox} 中作为强调展示，盒子内使用 \texttt{\textbackslash centering} 居中。适合用于关键图示的视觉突出。
 
 \begin{genbox}{三角函数图像}
+\centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=8cm,
-    height=5cm,
+    width=10cm,
+    height=6cm,
     xlabel={$x$},
     ylabel={$y$},
     grid=major,
@@ -40,22 +54,103 @@
 \end{tikzpicture}
 \end{genbox}
 
-\begin{genbox}{指数函数图像}
+\subsection{并排子图}
+
+使用 \texttt{subfigure} 环境实现并排子图，每个子图可独立编号和引用。主图通过 \texttt{\textbackslash caption} 命名，子图通过子环境内的 \texttt{\textbackslash caption} 命名。
+
+\begin{figure}[htbp]
+\centering
+\caption{指数函数族对比}
+\label{fig:exponential}
+\begin{subfigure}{0.45\textwidth}
+\centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=8cm,
+    width=\textwidth,
     height=5cm,
     xlabel={$x$},
     ylabel={$f(x)$},
     grid=major,
     xmin=-3, xmax=3,
     ymin=-1, ymax=10,
-    legend pos=north west,
 ]
 \addplot[blue, thick, samples=100] {exp(x)};
-\addlegendentry{$e^x$}
-\addplot[red, thick, samples=100] {exp(-x)};
-\addlegendentry{$e^{-x}$}
 \end{axis}
 \end{tikzpicture}
+\caption{$e^x$ 增长曲线}
+\label{fig:exp_growth}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=5cm,
+    xlabel={$x$},
+    ylabel={$f(x)$},
+    grid=major,
+    xmin=-3, xmax=3,
+    ymin=-1, ymax=10,
+]
+\addplot[red, thick, samples=100] {exp(-x)};
+\end{axis}
+\end{tikzpicture}
+\caption{$e^{-x}$ 衰减曲线}
+\label{fig:exp_decay}
+\end{subfigure}
+\end{figure}
+
+\subsection{盒子内并排图}
+
+在 \texttt{genbox} 内通过 \texttt{minipage} 实现并排图片，适合对比性内容。每个 \texttt{minipage} 内部使用 \texttt{\textbackslash centering} 居中。
+
+\begin{genbox}{多项式函数对比}
+\centering
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth,
+    height=4cm,
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=major,
+    xmin=-3, xmax=3,
+    ymin=-10, ymax=10,
+]
+\addplot[blue, thick, samples=100] {x^3};
+\end{axis}
+\end{tikzpicture}\\
+\small $y = x^3$
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.45\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\linewidth,
+    height=4cm,
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=major,
+    xmin=-3, xmax=3,
+    ymin=-10, ymax=10,
+]
+\addplot[red, thick, samples=100] {x^2 - 2};
+\end{axis}
+\end{tikzpicture}\\
+\small $y = x^2 - 2$
+\end{minipage}
 \end{genbox}
+
+\subsection{使用外部图片}
+
+通过 \texttt{\textbackslash includegraphics} 引入外部图片，建议配合 \texttt{figure} 环境使用，以便添加图题和交叉引用。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{assets/default/yyyby尧了望}
+\caption{外部图片示例}
+\label{fig:external}
+\end{figure}
