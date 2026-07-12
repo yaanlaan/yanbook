@@ -146,6 +146,25 @@ make clean-all
 
 ## 三、核心环境
 
+### 3.0 盒子与非盒子编排原则
+
+本模板同时提供**盒子环境**（带阴影和彩色边框的 tcolorbox）和**非盒子环境**（plain amsthm 样式）。合理混用二者可以显著提升阅读体验。
+
+**核心原则：盒子只用于最重要的内容，次要内容使用非盒子环境。**
+
+| 类别 | 使用场景 | 环境名称 |
+|------|---------|---------|
+| **盒子（重点突出）** | 核心定理、重要定义、关键技巧、需要视觉强调的内容 | `thmbox`, `dfnbox`, `exbox`, `tecbox`, `lembox` |
+| **非盒子（常规内容）** | 一般性定理、辅助命题、简单推论、备注、普通定义 | `theorem`, `definition`, `proposition`, `corollary`, `remark`, `lemma`, `example` |
+
+**判断标准：** 问自己"这个定理是否值得读者一眼看到？"——如果去掉盒子，读者需要花额外精力才能注意到它，那么它值得用盒子；如果它只是推导过程中的一个普通步骤，用非盒子即可。
+
+**编排建议：**
+- 盒子与非盒子交错排列，避免连续多个盒子造成视觉疲劳
+- 盒子之间至少插入一段叙述性文字或一个非盒子环境
+- 证明（`proof`）环境统一使用非盒子样式，即使定理本身用了盒子
+- 一页中建议不超过 2-3 个盒子
+
 ### 3.1 定义环境 (dfnbox)
 
 ```latex
@@ -380,28 +399,60 @@ A \symdiff B  % 集合 A 和 B 的对称差
 \frac{d}{dx}
 ```
 
-### 5.3 定理环境
+### 5.3 定理环境（非盒子）
+
+本模板提供两类定理环境：**盒子版**（`thmbox`, `lembox`，见第3.4-3.5节）和**非盒子版**（plain amsthm）。非盒子版适用于一般性定理、辅助命题和简单推论，视觉上更轻量。
 
 ```latex
-\begin{theorem}
+% 支持可选标题和交叉引用标签
+\begin{theorem}[标题]{标签}
     定理内容
 \end{theorem}
 
-\begin{lemma}
+\begin{lemma}[标题]{标签}
     引理内容
 \end{lemma}
 
-\begin{proposition}
+\begin{proposition}[标题]{标签}
     命题内容
 \end{proposition}
 
-\begin{corollary}
+\begin{corollary}[标题]{标签}
     推论内容
 \end{corollary}
 
-\begin{remark}
+\begin{remark}[标题]{标签}
     备注内容
 \end{remark}
+
+\begin{example}[标题]{标签}
+    示例内容
+\end{example}
+
+\begin{definition}[标题]{标签}
+    定义内容
+\end{definition}
+```
+
+**使用建议：**
+- **`theorem`**：一般性定理，如"卷积的性质"、"弱收敛序列的有界性"
+- **`proposition`**：辅助性命题，如"内积诱导的范数"、"正交补的性质"
+- **`corollary`**：从主要定理直接推出的结论
+- **`remark`**：补充说明、注意事项
+- **`definition`**：普通定义（非核心概念）
+- **`example`**：例证说明
+
+**何时用盒子（`thmbox`）vs 非盒子（`theorem`）：**
+- 核心基础定理 → 用 `thmbox`（如 Cauchy-Schwarz 不等式、正交投影定理）
+- 推导过程中的辅助定理 → 用 `theorem`（如极化恒等式、Bessel 不等式）
+- 判断标准：如果去掉盒子后读者仍能轻松定位该定理，则用非盒子即可
+
+**交叉引用：** 所有环境均支持 `\label` 和 `\ref`，用法统一：
+```latex
+\begin{theorem}[标题]{thm:my_label}
+    内容...
+\end{theorem}
+引用：\ref{thm:my_label}
 ```
 
 ---
@@ -857,38 +908,57 @@ project/
 2. 代码块添加标题（文件名）
 3. 保持代码缩进一致
 
-### 12.4 内容结构
+### 12.4 内容结构（盒子与非盒子混排）
+
+**推荐模式：** 叙述文字 → 非盒子定理/命题 → 证明 → 叙述文字 → 盒子核心定理 → 证明 → 叙述文字 → 非盒子推论/例子
 
 ```latex
 \section{标题}
 
-简介段落...
+简介段落，介绍本节的主题和背景...
 
-\begin{dfnbox*}{核心定义}
-    定义内容...
-\end{dfnbox*}
+\begin{definition}[基本概念]{dfn:basic}
+    普通定义内容（非盒子）
+\end{definition}
 
-数学推导...
+进一步阐述，说明该定义的意义...
 
-\[
-公式...
-\]
+\begin{theorem}[辅助定理]{thm:helper}
+    一般性定理（非盒子），用于为后续核心定理做铺垫
+\end{theorem}
 
-\begin{genbox}{关键要点}
-    \begin{itemize}
-        \item 要点1
-        \item 要点2
-    \end{itemize}
-\end{genbox}
+\begin{proof}
+    证明过程...
+\end{proof}
 
-\begin{algobox}{代码实现}
-    \begin{lstlisting}[language=Python]
-    代码...
-    \end{lstlisting}
-\end{algobox}
+过渡段落，引出核心定理...
+
+\begin{thmbox}[核心定理]{thm:main}
+    最重要的定理（盒子），本节的核心结论
+\end{thmbox}
+
+\begin{proof}
+    核心定理的详细证明...
+\end{proof}
+
+\begin{corollary}[重要推论]{cor:main_app}
+    从核心定理推出的推论（非盒子）
+\end{corollary}
+
+\begin{example}[应用示例]{ex:main_app}
+    展示定理的应用（非盒子）
+\end{example}
+
+\begin{remark}[注记]{rem:note}
+    补充说明和注意事项（非盒子）
+\end{remark}
 ```
 
----
+**布局要点：**
+- **盒子密度控制**：每节不超过 2-3 个盒子，仅用于最重要的结论
+- **交错排列**：盒子之间至少有一个非盒子环境或一段叙述文字
+- **证明保持非盒子**：无论定理是否用盒子，`proof` 环境始终使用非盒子样式
+- **视觉层次**：叙述文字 → 非盒子 → 盒子，形成"轻→中→重"的视觉节奏
 
 ## 十三、模板扩展
 
@@ -997,6 +1067,7 @@ def forward(x, weights, biases):
 | 1.6  | -          | 优化 Listings 代码块行号位置和边框样式     |
 | 1.7  | -          | genbox 支持自动跨页                        |
 | 1.8  | -          | 新增 maclightstyle / macdarkstyle 专用样式 |
+| 1.9  | 2026/07/12 | 新增盒子与非盒子编排原则；补充非盒子定理环境使用指南；重构内容结构示例 |
 
 ---
 

@@ -52,8 +52,8 @@
 \ifyanbook@math
     \RequirePackage{mathtools}          % 用于数学宏; 同时也加载 amsmath
     \RequirePackage{amsthm}
-    \newcommand{\squoval}{\openbox}
-    \renewcommand\qedsymbol{$\squoval$}
+    \newcommand{\squoval}{\blacksquare}
+    \renewcommand\qedsymbol{\rule{0.4em}{0.4em}}
     \RequirePackage{derivative}
 \fi
 
@@ -226,14 +226,28 @@
 \ifyanbook@fastcompile
 \tcbset{
     amzdefaultstyle/.style={
-        fonttitle=\strut\bfseries,  % 支柱用于统一标题高度
+        fonttitle=\strut\bfseries,
         separator sign=\amzcolorboxtitlesep,
+        parbox=false,
+        halign title=left,
+        lefttitle=0pt,
+        righttitle=0pt,
+        after title={\par},
+        before upper={\setlength{\parindent}{0pt}\everypar{\hspace*{2em}}},
         breakable
     },
     genboxstyle/.style={
         amzdefaultstyle,
     },
-    noteboxstyle/.style={breakable},
+    noteboxstyle/.style={
+        parbox=false,
+        halign title=left,
+        lefttitle=0pt,
+        righttitle=0pt,
+        after title={\par},
+        before upper={\setlength{\parindent}{0pt}\everypar{\hspace*{2em}}},
+        breakable
+    },
     codeboxstyle/.style={
         overlay={\begin{tcbclipinterior}\fill[darkgray!20!white] (frame.south west) rectangle ([xshift=6mm]frame.north west);\end{tcbclipinterior}},
         skin=bicolor,
@@ -249,11 +263,16 @@
     amzdefaultstyle/.style={
         enhanced,
         drop fuzzy shadow,
-        fonttitle=\strut\bfseries,  % 支柱用于统一标题高度
+        fonttitle=\strut\bfseries,
         boxrule=0pt,
         frame hidden,
         separator sign=\amzcolorboxtitlesep,
-        % parbox=false,               % 正常段落间距
+        parbox=false,
+        halign title=left,
+        lefttitle=0pt,
+        righttitle=0pt,
+        after title={\par},
+        before upper={\setlength{\parindent}{0pt}\everypar{\hspace*{2em}}},
         breakable,
     },
     genboxstyle/.style={
@@ -269,6 +288,12 @@
         borderline west={4pt}{0pt}{amznoteboxcolor},
         colback=amznoteboxcolor!7!white,
         sharp corners,
+        parbox=false,
+        halign title=left,
+        lefttitle=0pt,
+        righttitle=0pt,
+        after title={\par},
+        before upper={\setlength{\parindent}{0pt}\everypar{\hspace*{2em}}},
         breakable,
     },
     codeboxstyle/.style={
@@ -346,7 +371,8 @@
 
     \newenvironment{#1}[2][]{
         \global\settoggle{#3}{true}
-        \begin{tc#1}{##1}{##2}
+        \begin{tc#1}{##1}{}
+        \label{##2}
     }{
         \end{tc#1}
     }
@@ -380,6 +406,27 @@
     \newtheorem{example}{Example}[section]
     \newtheorem{problem}{Problem}[section]
     \newtheorem{solution}{Solution}[section]
+
+    % 重定义 amsthm 环境以接受可选的 {label} 参数用于交叉引用
+    % 用法: \begin{theorem}[note]{label} 或 \begin{theorem}[note] 或 \begin{theorem}
+    \let\oldtheorem\theorem \let\endoldtheorem\endtheorem
+    \RenewDocumentEnvironment{theorem}{o g}{\IfNoValueTF{#1}{\oldtheorem}{\oldtheorem[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldtheorem}
+    \let\oldlemma\lemma \let\endoldlemma\endlemma
+    \RenewDocumentEnvironment{lemma}{o g}{\IfNoValueTF{#1}{\oldlemma}{\oldlemma[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldlemma}
+    \let\olddefinition\definition \let\endolddefinition\enddefinition
+    \RenewDocumentEnvironment{definition}{o g}{\IfNoValueTF{#1}{\olddefinition}{\olddefinition[#1]}\IfNoValueF{#2}{\label{#2}}}{\endolddefinition}
+    \let\oldproposition\proposition \let\endoldproposition\endproposition
+    \RenewDocumentEnvironment{proposition}{o g}{\IfNoValueTF{#1}{\oldproposition}{\oldproposition[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldproposition}
+    \let\oldcorollary\corollary \let\endoldcorollary\endcorollary
+    \RenewDocumentEnvironment{corollary}{o g}{\IfNoValueTF{#1}{\oldcorollary}{\oldcorollary[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldcorollary}
+    \let\oldremark\remark \let\endoldremark\endremark
+    \RenewDocumentEnvironment{remark}{o g}{\IfNoValueTF{#1}{\oldremark}{\oldremark[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldremark}
+    \let\oldexample\example \let\endoldexample\endexample
+    \RenewDocumentEnvironment{example}{o g}{\IfNoValueTF{#1}{\oldexample}{\oldexample[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldexample}
+    \let\oldproblem\problem \let\endoldproblem\endproblem
+    \RenewDocumentEnvironment{problem}{o g}{\IfNoValueTF{#1}{\oldproblem}{\oldproblem[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldproblem}
+    \let\oldsolution\solution \let\endoldsolution\endsolution
+    \RenewDocumentEnvironment{solution}{o g}{\IfNoValueTF{#1}{\oldsolution}{\oldsolution[#1]}\IfNoValueF{#2}{\label{#2}}}{\endoldsolution}
 \fi
 
 % ------------------------------------------------------------
@@ -635,6 +682,10 @@
     \DeclareMathOperator{\proj}{proj}
     \DeclareMathOperator{\comp}{comp}
     \DeclareMathOperator{\TIME}{TIME}
+    \DeclareMathOperator*{\esssup}{ess\,sup}
+    \DeclareMathOperator{\inte}{int}
+    \DeclareMathOperator{\diam}{diam}
+    \DeclareMathOperator{\loc}{loc}
 
 
     \newcommand{\id}{\text{id}}
